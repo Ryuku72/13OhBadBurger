@@ -23,17 +23,14 @@ router.post("/newBurger", function(req, res) {
  
   burgers.create([
     req.body.title
-  ], function(result) {
-    // Send back the ID of the new quote
-    res.json({ id: result.insertId });
-  },
+  ], function(result1) {
   ingredients.create(
     ingredientList
-  , function(result) {
-    // Send back the ID of the new quote
-    res.json({ id: result.insertId });
-  }
-  ))
+  , function(result2) {
+    res.json({ id1: result1.insertId, id2: result2.insertId })    
+  })
+})
+  
 });
 
 

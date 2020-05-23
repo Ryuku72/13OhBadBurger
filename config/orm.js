@@ -47,14 +47,16 @@ var orm = {
         const input = [table ,{title: cols, checkOut: 1, purchased: 0}]
         const question = "INSERT INTO ?? SET ?";
         connection.query(question, input, function(err, result) {
-			if (err) throw err;
-			cb(result);
+			if (err){
+                throw err;
+            }
+            cb(result);
 		});
     },
 
-    createIngredients: async function(colOne){
+    createIngredients: function(colOne, callback){
         const question = "INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (?, ?);"
-       
+
         connection.query("SELECT id FROM Burgers", function (err, res) {
             if (err) throw err;
             let burgerLength = res.length;
@@ -67,6 +69,7 @@ var orm = {
                 })
             }
         })
+        callback("Sucess. Burger added!!")
     },
 
       // An example of objColVals would be {name: panther, sleepy: true}

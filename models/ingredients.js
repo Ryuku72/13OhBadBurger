@@ -8,8 +8,10 @@ const ingredients  = {
         });
       },
     
-      create: function(colOne) {
-        orm.createIngredients(colOne);
+      create: function(colOne, callback) {
+        orm.createIngredients(colOne, function(res) {
+            callback(res)
+          });
       },
 }
 

@@ -48,7 +48,7 @@ $(document).ready(function() {
     $(".newBurger").on("submit", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
-        
+
             var toppings = [];
             $.each($("input[name='topping']:checked"), function(){
                 toppings.push($(this).val());
@@ -72,9 +72,9 @@ $(document).ready(function() {
           function() {
             console.log("created new burger");
             // Reload the page to get the updated list
-            //location.reload();
           }
         );
+        location.reload();
       });
 
 
