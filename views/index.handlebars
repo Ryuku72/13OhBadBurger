@@ -7,42 +7,41 @@
 
                 <div class="row">
                 <img src="./assets/img/ohBadBurger.jpg" class="img-fluid titleBurger" alt="ohBadBurger">
-
-                <form>
-                    <div class="form-group col-md-10 newBurger" action="/" method="POST">
+                
+                    <div class="col-md-10 newBurger" >
                         
-                        <label for="inputBurger">Oh!Bad Fillet Patties</label>
-                        <select id="inputBurger" class="form-control">
+                        <label for="inputPatty">Oh!Bad Fillet Patties</label>
+                        <select id="inputPatty" class="form-control">
                           <option selected></option>
                             {{#each ingredient}}
                               {{#if patty}}
-                                <option value="{{this.id}}">{{this.name}}</option>
+                                <option value="{{this.id}}" name="patty" id="patty{{this.id}}">{{this.name}}</option>
                               {{/if}}
                             {{/each}}
                           </select>
                       </div>
-                    <div class="form-group col-md-10">
+                    <div class="col-md-10">
                         <label for="inputSauce">HomeBrew Sauce</label>
                         <select id="inputSauce" class="form-control">
                             <option selected value="None"></option>
                             {{#each ingredient}}
                               {{#if sauce}}
-                               <option value="{{this.id}}"> {{this.name}}</option>
+                               <option value="{{this.id}}" name="sauce" id="sauce{{this.id}}"">{{this.name}}</option>
                              {{/if}}
                             {{/each}}
                         </select>
                     </div>
-                    <fieldset class="form-group col-md-12">
+                    <fieldset class="col-md-12">
                         <div class="row">
-                            <legend class="col-form-label col-md-12">Toppings</legend>
+                            <legend class="col-md-12">Toppings</legend>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                               {{#each ingredient}}
                               {{#if topping}}
                                     <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="top{{this.id}}"
-                                        value="{{this.name}}" onchange="check_value({{this.id}},this)">
+                                    <input class="form-check-input" type="checkbox" class="topping" id="top{{this.id}}"
+                                        value="{{this.id}}" name="topping" onchange="check_value({{this.id}},this)">
                                     <label class="form-check-label" for="{{this.name}}ID">{{this.name}}</label>
                                 </div>                             
                              {{/if}}
@@ -51,32 +50,21 @@
                         </div>
                     </fieldset>
                     <div class="col-md-12">
-                    <div class="form-group row">
+                    <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control" type="text" id="burgerName" name="title" placeholder="Burger Name">
+                             <form class="newBurger" action="/newburger" method="POST">
+                            <input type="text" id="BurgerID" name="title" placeholder="Flaming Lips Burger">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="submit" class="btn btn-warning">RESET</button> 
+                            <button type="submit" class="btn btn-primary addBurgerBtn">Submit</button>
+                            
                         </div>
                     </div>
                     </div>
                 </form>
             </div>
-
-<!---Summary Container
-            <div class="row">
-                <div class="col-12 border border-dark">
-                <h2>Summary</h2>
-                <h5>Name: </h3>
-                <h5>SpiceLvL: </h3>
-                <h5>Price: </h3>
-                <button type="submit" class="btn btn-success">PURCHASE</button> 
-                <button type="submit" class="btn btn-warning">RESET</button> 
-                </div>  
-            </div> -->
         </div> <!--- Last Row -->
 
 <!---Builder Container -->
@@ -117,7 +105,22 @@
                 </div>
             </div>
         </div>
-    </div> <!--End of Main Container-->
+    </div> 
+    
+    <!--End of Main Container-->
+
+<div class="container">
+            <div class="row">
+                <div class="col-12">
+                <h2>Summary</h2>
+                <h5>Name: </h3>
+                <h5>SpiceLvL: </h3>
+                <h5>Price: </h3>
+                <button type="submit" class="btn btn-success">PURCHASE</button> 
+                <button type="submit" class="btn btn-warning">RESET</button> 
+                </div>  
+            </div>
+</div>
 
     <div class="container">
         <h3>Awaiting CheckOut</h3>
@@ -135,14 +138,13 @@
                 <span class="SpideLvL float-left">SpiceLvL: {{this.SpiceLvL}} </span>
                 </div>
                 <div class="col">
-                <span class="Price float-right">Price: ${{this.Price}} </span>
+                <span class="Price float-right">Price: $ {{this.Price}} </span>
                 </div>
                   <div class="col">
                 <span class="Price float-right">Time: {{this.Time}} </span>
                 </div>
                 <div class="col">    
                     <form action="/{{this.burgerID}}?_method=PUT" method="POST"></form>
-                    <input name="checkOut" value="false">
               <button type="submit"class="btn btn-success float-right"name="Purchased" value="true" >PURCHASE</button> 
               </form>
               </div>
@@ -168,7 +170,7 @@
                 <span class="SpideLvL float-left">SpiceLvL: {{this.SpiceLvL}} </span>
                 </div>
                 <div class="col">
-                <span class="Price float-right">Price: ${{this.Price}} </span>
+                <span class="Price float-right">Price: ${{this.Price}}</span>
                 </div>
                   <div class="col">
                 <span class="Price float-right"> Date: {{this.Date}} </span>

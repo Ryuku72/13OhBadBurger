@@ -21,8 +21,8 @@ const burgers = {
 }, 
 
   // The variables cols and vals are arrays.
-  create: function(cols, vals, cb) {
-    orm.create("Burger", cols, vals, function(res) {
+  create: function(cols, cb) {
+    orm.create("burgers", cols, function(res) {
       cb(res);
     });
   },

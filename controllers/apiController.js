@@ -10,53 +10,62 @@ router.get("/", function(req, res) {
 
   burgers.all(function(burgers){
    ingredients.all(function(ingredients){
-     console.log({burger: burgers, ingredient: ingredients})
     res.render("index", {burger: burgers, ingredient: ingredients})
  })
   })
 });
 
-// router.post("/api/burger", function(req, res) {
-//   console.log("post request")
-//  burger.create([
-//    "BurgerId", "Title", "SpiceLvL", "Price", "Time", "Date", "Purchased", "checkOut" 
-//  ])
-// });
+router.post("/newBurger", function(req, res) {
 
-// router.put("/api/:burgerID", function(req, res) {
+  ingredientList = req.body.Topping
+  ingredientList.push(req.body.Sauce)
+  ingredientList.push(req.body.Patty)
  
-//   console.log("put request")
- 
-//    var condition = req.params;
+  burgers.create([
+    req.body.title
+  ], function(result) {
+    // Send back the ID of the new quote
+    res.json({ id: result.insertId });
+  },
+  ingredients.create(
+    ingredientList
+  , function(result) {
+    // Send back the ID of the new quote
+    res.json({ id: result.insertId });
+  }
+  ))
+});
 
-//   console.log("condition", condition);
-//   burgers.update({
 
-//     Purchased: req.body.Purchased,
-//     checkOut: req.body.checkOut
-  
-//   }, condition, function(result) {
-//     if (result.changedRows.Purchased === "0" && result.changedRows.checkOut === "1") {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+router.put("/api/cats/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
 
-// router.delete("/burger/:burgerID", function(req, res) {
-//   var condition = "burgerID = " + req.params.id;
+  console.log("condition", condition);
 
-//   burgers.delete(condition, function(result) {
-//     if (result.affectedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  cat.update({
+    sleepy: req.body.sleepy
+  }, condition, function(result) {
+    if (result.changedRows == 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
+
+router.delete("/api/cats/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
+
+  cat.delete(condition, function(result) {
+    if (result.affectedRows == 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
 
 // Export routes for server.js to use.
 module.exports = router;

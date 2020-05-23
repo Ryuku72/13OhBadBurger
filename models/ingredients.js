@@ -7,6 +7,10 @@ const ingredients  = {
           callback(res)
         });
       },
+    
+      create: function(colOne) {
+        orm.createIngredients(colOne);
+      },
 }
 
 module.exports = ingredients;

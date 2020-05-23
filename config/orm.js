@@ -28,76 +28,6 @@ function objToSql(ob) {
 }
 
 var orm = {
-    // all: function (tableInput, cb) {
-    //     var queryString = "SELECT * FROM " + tableInput + ";";
-    //     connection.query(queryString, function (err, result) {
-    //         if (err) {
-    //             console.log(err);
-    //         }
-    //         cb(result);
-    //     });
-    // },
-
-    create: function (table, cols, vals, cb) {
-        var queryString = "INSERT INTO " + table;
-
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
-
-        console.log(queryString);
-
-        connection.query(queryString, vals, function (err, result) {
-            if (err) {
-                throw err;
-            }
-
-            cb(result);
-        });
-    },
-    update: function (table, objColVals, condition, cb) {
-        var queryString = "UPDATE " + table;
-
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
-
-        console.log(queryString);
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-            cb(result);
-        });
-    },
-    delete: function (table, condition, cb) {
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
-
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-            cb(result);
-        });
-    },
-
-    // selectAll: function (searchZero, searchOne, sumSearchOne, sumSearchOneName, sumSearchTwo, sumSearchTwoName, searchTwo, tableOne, tableTwo, colOne, colTwo, colTwoId, tableThree, colThree, colFour, colFourID, groupVal, callback) 
-    // {
-    //     const question = "Select ??, ??, Sum(??) as ??, Sum(??) as ??, time(Time) as Time, date(Time) as Date, ?? from ?? INNER JOIN ?? on ?? = ??.??  INNER JOIN ?? on ?? = ??.?? group by ??;"
-    //     const inputArray = [searchZero, searchOne, sumSearchOne, sumSearchOneName, sumSearchTwo, sumSearchTwoName, searchTwo, tableOne, tableTwo, colOne, colTwo, colTwoId, tableThree, colThree, colFour, colFourID, groupVal]
-    //     connection.query(question, inputArray, function (err, result) {
-    //         if (err) throw err;
-    //         callback(result);
-    //     }, )
-    // }, //burgers, ingredient
-      
-    
     selectAll : function(tableInput, callback){
         const input = [tableInput];
         const question = "Select * FROM Ingredients;";
@@ -111,18 +41,93 @@ var orm = {
             }
         connection.query(question, input, answer);
     },
+
+    create: function(table, cols, cb) {
     
+        const input = [table ,{title: cols, checkOut: 1, purchased: 0}]
+        const question = "INSERT INTO ?? SET ?";
+        connection.query(question, input, function(err, result) {
+			if (err) throw err;
+			cb(result);
+		});
+    },
+
+    createIngredients: async function(colOne){
+        const question = "INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (?, ?);"
+       
+        connection.query("SELECT id FROM Burgers", function (err, res) {
+            if (err) throw err;
+            let burgerLength = res.length;
+            console.log(burgerLength)
+           
+            for(let i = 0; colOne.length > i; i++){
+                let numberInput = parseInt(colOne[i]);
+                connection.query(question, [burgerLength, numberInput], function (err,res){
+                    if (err) console.log(err);
+                })
+            }
+        })
+    },
+
+      // An example of objColVals would be {name: panther, sleepy: true}
+      update: function(table, objColVals, condition, cb) {
+        var queryString = "UPDATE " + table;
+    
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+    
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+    
+          cb(result);
+        });
+      },
+      delete: function(table, condition, cb) {
+        var queryString = "DELETE FROM " + table;
+        queryString += " WHERE ";
+        queryString += condition;
+    
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+    
+          cb(result);
+        });
+      }
+    };
+    
+    // Export the orm object for the model (cat.js).
+    module.exports = orm;
+
+
+    // selectAll: function (searchZero, searchOne, sumSearchOne, sumSearchOneName, sumSearchTwo, sumSearchTwoName, searchTwo, tableOne, tableTwo, colOne, colTwo, colTwoId, tableThree, colThree, colFour, colFourID, groupVal, callback) 
+    // {
+    //     const question = "Select ??, ??, Sum(??) as ??, Sum(??) as ??, time(Time) as Time, date(Time) as Date, ?? from ?? INNER JOIN ?? on ?? = ??.??  INNER JOIN ?? on ?? = ??.?? group by ??;"
+    //     const inputArray = [searchZero, searchOne, sumSearchOne, sumSearchOneName, sumSearchTwo, sumSearchTwoName, searchTwo, tableOne, tableTwo, colOne, colTwo, colTwoId, tableThree, colThree, colFour, colFourID, groupVal]
+    //     connection.query(question, inputArray, function (err, result) {
+    //         if (err) throw err;
+    //         callback(result);
+    //     }, )
+    // }, //burgers, ingredient
+      
+
     
     // Update
 
-    updateStatus: function (tableInput, colOne, colTwo, tableVal, callback) {
-        const question = "UPDATE ?? SET ??, ?? where ?";
-        const inputArray = [tableInput, colOne, colOneVal, colTwo, colTwoVal, tableVal];
-        connection.query(question, inputArray, function (err, result) {
-            if (err) throw err;
-            callback(result);
-        }, );
-    },
+    // updateStatus: function (tableInput, colOne, colTwo, tableVal, callback) {
+    //     const question = "UPDATE ?? SET ??, ?? where ?";
+    //     const inputArray = [tableInput, colOne, colOneVal, colTwo, colTwoVal, tableVal];
+    //     connection.query(question, inputArray, function (err, result) {
+    //         if (err) throw err;
+    //         callback(result);
+    //     }, );
+    // },
 
     // selectWhereID: function (colArray, tableInput, colToSearch, valOfCol, callback) {
     //     const question = "SELECT ?? FROM ?? WHERE ?? = ?";
@@ -220,6 +225,4 @@ var orm = {
     //     }, );
     // }, // delete order
 
-};
 
-module.exports = orm;

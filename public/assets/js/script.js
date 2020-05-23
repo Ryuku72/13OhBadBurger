@@ -1,6 +1,5 @@
  function check_value(val, mycheckbox) {
     const imgEL = document.getElementById("img"+val);
-    console.log(imgEL)
         if (mycheckbox.checked === true){
             imgEL.classList.remove("imgClear");
         } else {
@@ -8,16 +7,85 @@
         }
         }
 
+// function decimalFix(num){   
+//     let value = num; 
+//     return value.toFixed(2)
+// }
+
+// const form = document.forms[0];
+
+// form.addEventListener("submit", function(event) {
+//   event.preventDefault();
+//   const data = new FormData(form);
+//   form.addEventListener("formdata", event => {
+//     // event.formData grabs the object
+
+//     const data = event.formData
+//     const entries = [...data.entries()];
+//     console.log(entries);
+
+//     const values = [...data.values()];
+//   console.log(values);
+//   });
+// });
+
 
 $(document).ready(function() {
-    // let inputVal = $("#inputSauce :selected").val()
-    $("#inputBurger").click(function(){
+
+    // $(".addBurgerBtn").on("click", function(){
+    //     const sauce = $('#inputSauce option:selected').text();
+    //     const sp = $('#inputSauce option:selected').val();
+    //     const patty = $('#inputPatty option:selected').text();
+    //     const pp= $('#inputPatty option:selected').val();
+        
+        
+    //     console.log(sauce);
+    //     console.log(sp);
+    //     console.log(patty);
+    //     console.log(pp);
+    // })
+
+    $(".newBurger").on("submit", function(event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+        
+            var toppings = [];
+            $.each($("input[name='topping']:checked"), function(){
+                toppings.push($(this).val());
+            });
+            console.log("My toppings are: " + toppings.join(", "));
+    
+        const newBurger = {
+          
+            title: $("#BurgerID").val().trim(),
+            Sauce: $('#inputSauce option:selected').val(),
+            Patty: $('#inputPatty option:selected').val(),
+            Topping: toppings
+        };
+        console.log(newBurger)
+    
+        // Send the POST request.
+        $.ajax("/newburger", {
+          type: "POST",
+          data: newBurger
+        }).then(
+          function() {
+            console.log("created new burger");
+            // Reload the page to get the updated list
+            //location.reload();
+          }
+        );
+      });
+
+
+ 
+    
+    $("#inputPatty").click(function(){
         let burgerID = $(this).val();
         $("#img"+burgerID).addClass("imgClear")
     });
 
-    $("#inputBurger").change(function(){
-        console.log($(this).val());
+    $("#inputPatty").change(function(){
         let burgerID = $(this).val();
         if ($("#img"+burgerID).attr("class") === "imgClear"){
             $("#img"+burgerID).removeClass("imgClear")
@@ -29,78 +97,59 @@ $(document).ready(function() {
     
     $("#inputSauce").click(function(){
         let sauceID = $(this).val();
-        console.log(sauceID);
         $("#img"+sauceID).addClass("imgClear")
     });
 
     $("#inputSauce").change(function(){
-        console.log($(this).val());
         let sauceID = $(this).val();
         if ($("#img"+sauceID).attr("class") === "imgClear"){
             $("#img"+sauceID).removeClass("imgClear")
         }else{
             $("#img"+sauceID).addClass("imgClear")
         }
+
+  
+
+
+
     });
 
-    // Make sure we wait to attach our handlers until the DOM is fully loaded.
+//     $(".change-sleep").on("click", function(event) {
+//         var id = $(this).data("id");
+//         var newSleep = $(this).data("newsleep");
+    
+//         var newSleepState = {
+//           sleepy: newSleep
+//         };
+    
+//         // Send the PUT request.
+//         $.ajax("/api/cats/" + id, {
+//           type: "PUT",
+//           data: newSleepState
+//         }).then(
+//           function() {
+//             console.log("changed sleep to", newSleep);
+//             // Reload the page to get the updated list
+//             location.reload();
+//           }
+//         );
+//       });
+    
+  
+    
+//       $(".delete-cat").on("click", function(event) {
+//         var id = $(this).data("id");
+    
+//         // Send the DELETE request.
+//         $.ajax("/api/cats/" + id, {
+//           type: "DELETE"
+//         }).then(
+//           function() {
+//             console.log("deleted cat", id);
+//             // Reload the page to get the updated list
+//             location.reload();
+//           }
+//         );
+//       });
 
-    // $(".burger-sale").on("click", function(event) {
-    //   let id = $(this).data("BurgerID");
-    //   let burgerSold = $(this).data("newsleep");
-  
-    //   var newSale = {
-    //     checkOut: burgerSold,
-    //     purchased: 0
-    //   };
-  
-    //   // Send the PUT request.
-    //   $.ajax("/api/burger/" + id, {
-    //     type: "PUT",
-    //     data: newSale
-    //   }).then(
-    //     function() {
-    //       console.log("changed checkOut to", newSale);
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-    // });
-  
-    // $(".create-form").on("submit", function(event) {
-    //   // Make sure to preventDefault on a submit event.
-    //   event.preventDefault();
-  
-    //   var newCat = {
-    //     name: $("#ca").val().trim(),
-    //     sleepy: $("[name=sleepy]:checked").val().trim()
-    //   };
-  
-    //   // Send the POST request.
-    //   $.ajax("/api/cats", {
-    //     type: "POST",
-    //     data: newCat
-    //   }).then(
-    //     function() {
-    //       console.log("created new cat");
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-    // });
-  
-    // $(".delete-cat").on("click", function(event) {
-    //   var id = $(this).data("id");
-  
-    //   // Send the DELETE request.
-    //   $.ajax("/api/cats/" + id, {
-    //     type: "DELETE"
-    //   }).then(
-    //     function() {
-    //       console.log("deleted cat", id);
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-    // });
-  });
+   });
