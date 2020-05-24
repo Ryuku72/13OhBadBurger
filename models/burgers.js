@@ -5,7 +5,7 @@ const connection = require("../config/connection")
 const burgers = {
   all : function(callback) {
 
-    const question = "Select Title, Sum(SpiceLvL) as SpiceLvL, Sum(Price) as Price, time(Time) as Time, date(Time) as Date, checkOut, Purchased from Ingredients Inner JOIN burgerOrder on IngredientID = Ingredients.id  Inner Join Burgers on BurgerID = Burgers.id group by BurgerID;"
+    const question = "Select burgerID, Title, Sum(SpiceLvL) as SpiceLvL, Sum(Price) as Price, time(Time) as Time, date(Time) as Date, checkOut, Purchased from Ingredients Inner JOIN burgerOrder on IngredientID = Ingredients.id  Inner Join Burgers on BurgerID = Burgers.id group by BurgerID order by burgerID desc;"
     
     const answer = function (err, res) {
         let tableArray = [];
@@ -16,6 +16,7 @@ const burgers = {
             }
         }
         callback(tableArray);
+        //console.log(tableArray)
     }
     connection.query(question, answer);
 }, 
@@ -27,21 +28,15 @@ const burgers = {
     });
   },
   
-  update: function(colOneVal, colTwoVal, selector, callback) {
-    let checkUpdate = 'checkOut =' + colOneVal;
-    let burgerID = 'id ='+ selector;
+  update: function(btnID, callback) {
 
-    orm.updateStatus("Burger", checkUpdate, burgerID, function(data){
+    orm.updateStatus(btnID, function(data){
       callback(data);
-  
-    orm.updateStatus("Burger", function(res) {
-      cb(res);
-    });
   });
 },
 
   delete: function(condition, cb) {
-    orm.delete("Burger", condition, function(res) {
+    orm.delete("Burgers", condition, function(res) {
       cb(res);
     });
   }

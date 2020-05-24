@@ -26,7 +26,7 @@
                             <option selected value="None"></option>
                             {{#each ingredient}}
                               {{#if sauce}}
-                               <option value="{{this.id}}" name="sauce" id="sauce{{this.id}}"">{{this.name}}</option>
+                               <option value="{{this.id}}" name="sauce" id="sauce{{this.id}}">{{this.name}}</option>
                              {{/if}}
                             {{/each}}
                         </select>
@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-6">
                              <form class="newBurger" action="/newburger" method="POST">
-                            <input type="text" id="BurgerID" name="title" placeholder="Flaming Lips Burger">
+                            <input type="text" id="BurgerID" name="title">
                         </div>
                     </div>
                     <div class="row">
@@ -116,26 +116,27 @@
         {{#if this.checkOut}}
               <li class="list-group-item"> 
         <div class="container">
-           <form action="/burger/{{this.burgerID}}?_method=PUT" method="PUT">
-          <div class="row">
+            </div>
+                 <div class="row">
+                <div class="col">
+                <span class="burgerId float-left">Id: {{this.burgerID}} </span>
+                </div>
                 <div class="col">
                 <span class="title float-left">{{this.Title}}</span> 
                 </div>
                 <div class="col">
-                <span class="SpideLvL float-left">SpiceLvL: {{this.SpiceLvL}} </span>
+                <span class="SpiceLvL float-left">SpiceLvL{{this.SpiceLvL}}SHU</span>
                 </div>
                 <div class="col">
-                <span class="Price float-right">Price: $ {{this.Price}} </span>
+                <span class="Price float-right">Price:${{this.Price}}</span>
                 </div>
                   <div class="col">
-                <span class="Price float-right">Time: {{this.Time}} </span>
+                <span class="Time float-right">Time:{{this.Time}}</span>
                 </div>
-                <div class="col">    
-                    <form action="/{{this.burgerID}}?_method=PUT" method="POST"></form>
-              <button type="submit"class="btn btn-success float-right"name="Purchased" value="true" >PURCHASE</button> 
-              </form>
+                <div class="col">
+              <button data-id="{{this.burgerID}}" class="btn btn-success purchaseBtn">PURCHASE</button> 
+               
               </div>
-            </form>
             </li>
         {{/if}}
    {{/each}}
@@ -150,6 +151,9 @@
         <li class="list-group-item"> 
         <div class="container">
           <div class="row">
+              <div class="col">
+                <span class="SpiceLvL float-left">Id: {{this.burgerID}}</span>
+                </div>
                 <div class="col">
                 <span class="title float-left">{{this.Title}}</span> 
                 </div>
@@ -163,8 +167,7 @@
                 <span class="Price float-right"> Date: {{this.Date}} </span>
                 </div>
                 <div class="col">
-            <form action="/{{this.id}}?_method=delete" method="delete">
-              <button type="submit"class="btn btn-danger float-right">DELETE</button> 
+              <button data-id="{{this.burgerID}}"class="btn btn-danger float-right delBtn">DELETE</button> 
             </div>
             </form> 
             </li>
