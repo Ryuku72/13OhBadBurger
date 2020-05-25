@@ -3,6 +3,7 @@ DROP DATABASE IF EXISTS ohBadBurgerDB;
 create database ohBadBurgerDB;
 
 use ohBadBurgerDB;
+SET time_zone= '+8:00';
 
 create table burgers (
 id INT NOT NULL AUTO_INCREMENT,
