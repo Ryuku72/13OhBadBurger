@@ -118,16 +118,16 @@
                 <span class="burgerID float-left">Id: {{this.burgerID}} </span>
                 </div>
                 <div class="col">
-                <span class="title float-left">{{this.Title}}</span> 
+                <span class="title float-left">{{this.title}}</span> 
                 </div>
                 <div class="col">
-                <span class="SpiceLvL float-left">SpiceLvL: {{this.SpiceLvL}}SHU</span>
+                <span class="SpiceLvL float-left">SpiceLvL: {{this.spiceLvL}}SHU</span>
                 </div>
                 <div class="col">
-                <span class="Price float-right">Price:${{this.Price}}</span>
+                <span class="Price float-right">Price:${{this.price}}</span>
                 </div>
                   <div class="col">
-                <span class="Time float-right">Time:{{this.Time}}</span>
+                <span class="Time float-right">Time:{{this.time}}</span>
                 </div>
                 <div class="col">
               <button data-id="{{this.burgerID}}" class="btn btn-success float-right  purchaseBtn">PURCHASE</button> 
@@ -141,7 +141,7 @@
          <h5 class="titles">Purchase history</h5>
         <ul>
  {{#each burger}}
-    {{#if this.Purchased}}
+    {{#if this.purchased}}
         <li class="list-group-item"> 
         <div class="container">
           <div class="row">
@@ -149,16 +149,16 @@
                 <span class="burgerID float-left">Id: {{this.burgerID}}</span>
                 </div>
                 <div class="col">
-                <span class="title float-left">{{this.Title}}</span> 
+                <span class="title float-left">{{this.title}}</span> 
                 </div>
                 <div class="col">
-                <span class="SpiceLvL float-left">SpiceLvL: {{this.SpiceLvL}} </span>
+                <span class="SpiceLvL float-left">SpiceLvL: {{this.spiceLvL}} </span>
                 </div>
                 <div class="col">
-                <span class="Price float-right">Price: ${{this.Price}}</span>
+                <span class="Price float-right">Price: ${{this.price}}</span>
                 </div>
                   <div class="col">
-                <span class="Price float-right"> Date: {{this.Date}} </span>
+                <span class="Price float-right"> Date: {{this.date}} </span>
                 </div>
                 <div class="col">
               <button data-id="{{this.burgerID}}"class="btn btn-danger float-right delBtn">DELETE</button> 
