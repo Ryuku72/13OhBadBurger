@@ -1,9 +1,9 @@
-INSERT INTO burger (title, checkout, purchased) VALUES ("Oh Cheezy Burger", 1, 0);
-INSERT INTO burger (title, checkout, purchased) VALUES ("Chicken Treat Burger", 1, 0);
-INSERT INTO burger (title, checkout, purchased) VALUES ("Oh Fish Burger", 1, 0);
-INSERT INTO burger (title, checkout, purchased) VALUES ("Supreme Tofu Burger", 0, 1);
-INSERT INTO burger (title, checkout, purchased) VALUES ("Beef XXX Burger", 0, 1);
-INSERT INTO burger (title, checkout, purchased) VALUES ("Nothing", 1, 0);
+INSERT INTO burgers (title, checkout, purchased) VALUES ("Oh Cheezy Burger", 1, 0);
+INSERT INTO burgers (title, checkout, purchased) VALUES ("Chicken Treat Burger", 1, 0);
+INSERT INTO burgers (title, checkout, purchased) VALUES ("Oh Fish Burger", 1, 0);
+INSERT INTO burgers (title, checkout, purchased) VALUES ("Supreme Tofu Burger", 0, 1);
+INSERT INTO burgers (title, checkout, purchased) VALUES ("Beef XXX Burger", 0, 1);
+INSERT INTO burgers (title, checkout, purchased) VALUES ("Nothing", 1, 0);
 
 INSERT INTO ingredients (name, spiceLvL, patty, topping, sauce, price) VALUES ("Chilli Lava", 9, 0, 0, 1, 1.20);
 INSERT INTO ingredients (name, spiceLvL, patty, topping, sauce, price) VALUES ("Tangy Mayo", 3, 0, 0, 1, 0.80);
@@ -47,4 +47,6 @@ INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (5, 7);
 INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (5, 8);
 INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (5, 9);
 INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (5, 13);
-INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (6, 2); 
+INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (6, 1);
+INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (6, 6);
+INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (6, 9);      
