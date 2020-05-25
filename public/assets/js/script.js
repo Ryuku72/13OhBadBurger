@@ -90,6 +90,8 @@ $(document).ready(function () {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
         } else {
           runAjax()
+          form.submitBtn.disabled = true;
+          return true;
         }
       });
     }
