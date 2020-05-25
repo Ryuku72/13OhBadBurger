@@ -46,9 +46,8 @@ $(document).ready(function () {
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
-    event.preventDefault();
+    //event.preventDefault();
     event.stopPropagation(); //stop from being sent 3 times to server
-
     $(".newBurger").attr('disabled', true);
   
 
