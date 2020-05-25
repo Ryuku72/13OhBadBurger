@@ -73,7 +73,12 @@ Core problems
 3. Interacting with multiple tables and getting errors "Header issues" though educational is painful
 4. I don't like bootstrap... but sometimes its a godsend
 5. There has to be a method to edit handlebars output... 
-6. So much time lost of silly things
+6. I did not use the ORM file correctly as I had issues passing data. This is most likely to not using query string or the question function. I did not understand their usuage as code and thus tried to work around it.
+7. Using script.js to make buttons work correctly and the relationship to req.body is still alien to me
+8. MySQL requests of VALUE vs BY was annoying. Had to fall back on the VALUE tag to sure things would work
+9. Join request should not be in the ORM
+10. Still not confident about the entire / get process
+
 
 Happy its done and leason learnt
 
@@ -89,6 +94,7 @@ Currently outstanding issues
 3. Price should be correctly formated
 4. Tables should be correctly marginalised
 5. Bootstrap should be removed
+6. Clean up my code
 
  <br>
 <a name="Installation">
