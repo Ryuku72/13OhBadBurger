@@ -47,6 +47,7 @@ $(document).ready(function () {
 
     $(".newBurger").on("submit", function (event) {
         event.preventDefault();
+        event.stopPropagation(); //stop from being sent 3 times to server
 
         var toppings = [];
         $.each($("input[name='topping']:checked"), function () {
@@ -55,7 +56,6 @@ $(document).ready(function () {
         //console.log("My toppings are: " + toppings.join(", "));
 
         const newBurger = {
-
             title: $("#BurgerID").val().trim(),
             Sauce: $('#inputSauce option:selected').val(),
             Patty: $('#inputPatty option:selected').val(),
@@ -70,7 +70,7 @@ $(document).ready(function () {
         }).then(
             function () {
         // Reload the page to get the updated list from server(true) or cache (false)
-        location.reload(true);
+       location.reload(true);
         
             }
         )

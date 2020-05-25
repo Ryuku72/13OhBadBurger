@@ -1,4 +1,5 @@
 const connection = require("../config/connection");
+const chalk = require("chalk");
 
 // Tools
 
@@ -18,41 +19,30 @@ const orm = {
     },
 
     create: function (table, cols, cb) {
-
-        const input = [table, {
-            title: cols,
-            checkOut: 1,
-            purchased: 0
-        }]
-
-        const question = "INSERT INTO ?? SET ?";
+        const inputName = cols.toString();
+        console.log("Burger Name: " + chalk.bold.red(inputName));
+        const input = [table, inputName, 1, 0];
+        const question = "INSERT INTO ?? (title, checkOut, purchased) VALUES (?, ?, ?)";
         connection.query(question, input, function (err, res) {
             if (err) {
                 throw err;
             }
-            //console.log(res);
             cb(res);
+            //console.log(res)
         });
     },
 
-    createIngredients: async function (colOne, callback) {
+    createIngredients: async function (colOne, numID, callback) {
         const question = "INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (?, ?);"
-
-        await connection.query("SELECT id FROM Burgers", function (err, res) {
-            if (err) throw err;
-            let burgerLength = res.length;
-            //console.log(burgerLength)
-
+   
             for (let i = 0; i < colOne.length; i++) {
                 let numberInput = parseInt(colOne[i]);
-                connection.query(question, [burgerLength, numberInput], function (err, result) {
+                connection.query(question, [numID, numberInput], function (err, result) {
                     if (err) throw err;
-                    //console.log(result)
+                    console.log("BurgerID " + chalk.bold.magenta(numID) + " updated. IngredientID " + chalk.bold.green(result.insertId) + " updated");
                 })
             }
-            callback("Sucess. Burger added!!")
-        })
-
+        callback(numID);
     },
 
     // Update
@@ -62,10 +52,10 @@ const orm = {
         const input = [parseInt(btnID)];
         //console.log(inputArray)
         connection.query(question, input, function (err, result) {
-            if (err){
-            throw err;   
+            if (err) {
+                throw err;
             }
-            callback(result);           
+            callback(result);
         });
     },
 
@@ -81,7 +71,6 @@ const orm = {
             callback(result);
         });
     },
-    
 };
 
 // Export the orm object for the model (cat.js).

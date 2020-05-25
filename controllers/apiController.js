@@ -7,7 +7,6 @@ const ingredients = require("../models/ingredients")
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-
   burgers.all(function (burgers) {
     ingredients.all(function (ingredients) {
       res.render("index", {
@@ -15,22 +14,22 @@ router.get("/", function (req, res) {
         ingredient: ingredients
       })
     })
-  })
+  });
 });
 
 router.post("/newBurger", function (req, res) {
 
-  //console.log(req.body);
-  ingredientList = req.body.Topping;
-  ingredientList.push(req.body.Sauce);
-  ingredientList.push(req.body.Patty);
-  //console.log(ingredientList);
+  burgers.create(req.body.title, function (result) {
+    let burgerID = result.insertId;
+    let ingredientList = []
+    ingredientList = req.body.Topping;
+    ingredientList.push(req.body.Sauce);
+    ingredientList.push(req.body.Patty);
 
-  burgers.create([req.body.title], function (result1) {
-    ingredients.create(ingredientList, function (result2) {
-      // console.log(result1.insertId);
-     // console.log(result2);
-      res.json({id1: result1.insertId})
+    ingredients.create(ingredientList, burgerID, function (result2) {
+      res.json({
+        id: result2
+      });
     })
   })
 });
@@ -39,7 +38,7 @@ router.put("/burgers/:id", function (req, res) {
     const btnID = req.params.id;
     if (req.params.id !== null) {
       burgers.update(btnID, function (result) {
-        res.status(200).json(result);
+        return res.status(200).json(result);
       })
     } else {
       res.status(200).end();
@@ -51,8 +50,8 @@ router.put("/burgers/:id", function (req, res) {
     const btnID = req.params.id;
 
     if (req.params.id !== null) {
-      burgers.delete(btnID, function(result) {
-        res.status(200).json(result)
+      burgers.delete(btnID, function (result) {
+        return res.status(200).json(result)
       })
     } else {
       res.status(200).end();

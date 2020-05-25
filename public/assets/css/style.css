@@ -1,3 +1,68 @@
 .imgClear {
     display: none;
 }
+
+#myContainer {
+    background-color: rgb(244, 188, 6);
+}
+
+.titleBurger {
+  padding: 60px;
+  width: 100%;
+}
+
+.newBurger {
+    width: 100%;
+    height: 600px;
+    vertical-align: middle;
+}
+
+.titles{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.addBurgerBtn {
+    margin: 20px 0;
+}
+
+.buildTitle {
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+}
+
+.burgerImg {
+    object-fit: cover;
+    width: 300px;
+    height: 30px;
+    float: right;
+}
+
+.backImg {
+    width: 400px;
+}
+
+.spacer {
+    width: 100%;
+    height:100px;
+}
+
+.purContainer {
+    padding-bottom: 40px;
+}
+
+footer {
+    width: 100%;
+    background-color: rgb(67, 67, 67);
+    height: 50px;
+}
+
+.foreign {
+    padding-top: 10px;
+    padding-right: 25px;
+    font-size: 1em;
+    font-family:'Press Start 2P', cursive;
+    color: skyblue;
+    text-align: end;
+}

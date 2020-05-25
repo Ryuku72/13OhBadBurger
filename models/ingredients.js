@@ -8,8 +8,8 @@ const ingredients  = {
         });
       },
     
-      create: function(colOne, callback) {
-        orm.createIngredients(colOne, function(res) {
+      create: function(colOne, burgerID, callback) {
+        orm.createIngredients(colOne, burgerID, function(res) {
             callback(res)
           });
       },
