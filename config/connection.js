@@ -1,5 +1,7 @@
 const mysql = require("mysql");
-const chalk = require("chalk");
+//const chalk = require("chalk");
+
+var connection;
 
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
@@ -14,7 +16,7 @@ if (process.env.JAWSDB_URL) {
     });
 };
 
-connection.connect();
+
 
 // //mySQL connection
 // connection.connect(function (err) {
