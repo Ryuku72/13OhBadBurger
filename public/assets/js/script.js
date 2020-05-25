@@ -89,9 +89,9 @@ $(document).ready(function () {
         } else if ($('#inputPatty option:selected').val() === "0") {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
         } else {
+          $(this).attr('disabled', true);
           runAjax()
-          form.submitBtn.disabled = true;
-          return true;
+          return false;
         }
       });
     }
