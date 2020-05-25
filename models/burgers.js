@@ -5,7 +5,7 @@ const connection = require("../config/connection")
 const burgers = {
   all : function(callback) {
 
-    const question = "Select burgerID, Title, Sum(SpiceLvL) as SpiceLvL, Sum(Price) as Price, time(Time) as Time, date(Time) as Date, checkOut, Purchased from Ingredients Inner JOIN burgerOrder on IngredientID = Ingredients.id  Inner Join Burgers on BurgerID = Burgers.id group by BurgerID order by burgerID desc;"
+    const question = "Select burgerID, title, Sum(spiceLvL) as spiceLvL, Sum(price) as price, time(time) as time, date(time) as date, checkOut, purchased from ingredients INNER JOIN burgerOrder on ingredientID = ingredients.id  INNER JOIN burgers on burgerID = burgers.id group by burgerID order by burgerID desc;"
     
     const answer = function (err, res) {
         let tableArray = [];
@@ -36,7 +36,7 @@ const burgers = {
 },
 
   delete: function(condition, cb) {
-    orm.delete("Burgers", condition, function(res) {
+    orm.delete("burgers", condition, function(res) {
       cb(res);
     });
   }

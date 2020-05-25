@@ -3,7 +3,7 @@ var orm = require("../config/orm.js");
 
 const ingredients  = {
     all: function(callback) {
-        orm.selectAll("Ingredients", function(res) {
+        orm.selectAll("ingredients", function(res) {
           callback(res)
         });
       },

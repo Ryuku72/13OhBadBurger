@@ -6,7 +6,7 @@ const chalk = require("chalk");
 const orm = {
     selectAll: function (tableInput, callback) {
         const input = [tableInput];
-        const question = "Select * FROM Ingredients;";
+        const question = "Select * FROM ingredients;";
         const answer = function (err, res) {
             if (err) throw err;
             let tableArray = [];
@@ -20,7 +20,7 @@ const orm = {
 
     create: function (table, cols, cb) {
         const inputName = cols.toString();
-        console.log("Burger Name: " + chalk.bold.red(inputName));
+        console.log("burger Name: " + chalk.bold.red(inputName));
         const input = [table, inputName, 1, 0];
         const question = "INSERT INTO ?? (title, checkOut, purchased) VALUES (?, ?, ?)";
         connection.query(question, input, function (err, res) {
@@ -39,7 +39,7 @@ const orm = {
                 let numberInput = parseInt(colOne[i]);
                 connection.query(question, [numID, numberInput], function (err, result) {
                     if (err) throw err;
-                    console.log("BurgerID " + chalk.bold.magenta(numID) + " updated. IngredientID " + chalk.bold.green(result.insertId) + " updated");
+                    console.log("burgerID " + chalk.bold.magenta(numID) + " updated. ingredientID " + chalk.bold.green(result.insertId) + " updated");
                 })
             }
         callback(numID);
