@@ -34,7 +34,7 @@ const orm = {
 
     createIngredients: async function (colOne, numID, callback) {
         const question = "INSERT INTO burgerOrder (burgerID, ingredientID) VALUES (?, ?);"
-   
+            
             for (let i = 0; i < colOne.length; i++) {
                 let numberInput = parseInt(colOne[i]);
                 connection.query(question, [numID, numberInput], function (err, result) {

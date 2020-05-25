@@ -49,10 +49,16 @@ $(document).ready(function () {
         event.preventDefault();
         event.stopPropagation(); //stop from being sent 3 times to server
 
+       
+       if ($(".topping:checked").length == 0) {
+         alert("NO TOPPINGS!!! \nPlease select at least one TOPPING")
+       
+       }else{
         var toppings = [];
         $.each($("input[name='topping']:checked"), function () {
             toppings.push($(this).val());
-        });
+  
+       
         //console.log("My toppings are: " + toppings.join(", "));
 
         const newBurger = {
@@ -61,19 +67,33 @@ $(document).ready(function () {
             Patty: $('#inputPatty option:selected').val(),
             Topping: toppings
         };
+
+        function runAjax () {
+           // Send the POST request.
+        $.ajax("/newburger", {
+          type: "POST",
+          data: newBurger
+      }).then(
+          function () {
+      // Reload the page to get the updated list from server(true) or cache (false)
+     location.reload(true);
+          })
+
+        }
         //console.log(newBurger)
 
-        // Send the POST request.
-        $.ajax("/newburger", {
-            type: "POST",
-            data: newBurger
-        }).then(
-            function () {
-        // Reload the page to get the updated list from server(true) or cache (false)
-       location.reload(true);
         
-            }
-        )
+        if ($("#BurgerID").val() === ""){
+          alert("YOUR NAME PLEASE \nPlease insert your BURGER NAME!!!") 
+        }else if( $('#inputSauce option:selected').val() === "0") {
+          alert("GOT TO HAVE SAUCE!!! \nPlease choose some SAUCE!!")
+        } else if ($('#inputPatty option:selected').val() === "0") {
+          alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
+        } else {
+          runAjax()
+        }
+      });
+    }
     });
 
 

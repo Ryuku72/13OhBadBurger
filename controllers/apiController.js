@@ -19,45 +19,43 @@ router.get("/", function (req, res) {
 
 router.post("/newBurger", function (req, res) {
 
-  burgers.create(req.body.title, function (result) {
-    let burgerID = result.insertId;
-    let ingredientList = []
-    ingredientList = req.body.Topping;
-    ingredientList.push(req.body.Sauce);
-    ingredientList.push(req.body.Patty);
-
-    ingredients.create(ingredientList, burgerID, function (result2) {
-      res.json({
-        id: result2
-      });
-    })
-  })
-});
-
-router.put("/burgers/:id", function (req, res) {
-    const btnID = req.params.id;
-    if (req.params.id !== null) {
-      burgers.update(btnID, function (result) {
-        return res.status(200).json(result);
+       burgers.create(req.body.title, function (result){
+       let burgerID = result.insertId;
+       let ingredientList = []
+       ingredientList = req.body.Topping;
+       ingredientList.push(req.body.Sauce);
+       ingredientList.push(req.body.Patty);
+       ingredients.create(ingredientList, burgerID, function (result2) {
+         // console.log(result1.insertId);
+           res.json({ id: result2 });
+        })
       })
-    } else {
-      res.status(200).end();
-    }
-  }),
+    });
+
+      router.put("/burgers/:id", function (req, res) {
+          const btnID = req.params.id;
+          if (req.params.id !== null) {
+            burgers.update(btnID, function (result) {
+              return res.status(200).json(result);
+            })
+          } else {
+            res.status(200).end();
+          }
+        }),
 
 
-  router.delete("/burgers/:id", function (req, res) {
-    const btnID = req.params.id;
+        router.delete("/burgers/:id", function (req, res) {
+          const btnID = req.params.id;
 
-    if (req.params.id !== null) {
-      burgers.delete(btnID, function (result) {
-        return res.status(200).json(result)
-      })
-    } else {
-      res.status(200).end();
-    }
+          if (req.params.id !== null) {
+            burgers.delete(btnID, function (result) {
+              return res.status(200).json(result)
+            })
+          } else {
+            res.status(200).end();
+          }
 
-  });
+        });
 
-// Export routes for server.js to use.
-module.exports = router;
+      // Export routes for server.js to use.
+      module.exports = router;

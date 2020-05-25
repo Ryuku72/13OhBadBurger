@@ -14,7 +14,7 @@
                       <p># # Please select below your key burger features # #</p>
                         <h5 class="titles">Oh!Bad Fillet Patties</h5>
                         <select id="inputPatty" class="form-control dropBox">
-                          <option selected></option>
+                          <option selected value="0"></option>
                             {{#each ingredient}}
                               {{#if patty}}
                                 <option value="{{this.id}}" name="patty" id="patty{{this.id}}">{{this.name}}</option>
@@ -25,7 +25,7 @@
                     <div class="col-md-10">
                         <h5 class="titles">HomeBrew Sauce</h5>
                         <select id="inputSauce" class="form-control dropBox">
-                            <option selected value="None"></option>
+                            <option selected value="0"></option>
                             {{#each ingredient}}
                               {{#if sauce}}
                                <option value="{{this.id}}" name="sauce" id="sauce{{this.id}}">{{this.name}}</option>
@@ -42,7 +42,7 @@
                               {{#each ingredient}}
                               {{#if topping}}
                                     <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" class="topping" id="top{{this.id}}"
+                                    <input class="form-check-input topping" type="checkbox" id="top{{this.id}}"
                                         value="{{this.id}}" name="topping" onchange="check_value({{this.id}},this)">
                                     <label class="form-check-label" for="{{this.name}}ID">{{this.name}}</label>
                                 </div>                             
@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-6">
                              <form class="newBurger" action="/newburger" method="POST">
-                              <h5 class="titles">Burger Name</h5>
+                              <h5 class="titles" pattern="[a-zA-Z]*">Burger Name</h5>
                             <input type="text" id="BurgerID" name="title" class="col-12">
                              <button type="submit" class="btn btn-primary addBurgerBtn">Submit</button>
                         </form>
