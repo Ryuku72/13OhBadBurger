@@ -49,6 +49,8 @@ $(document).ready(function () {
     event.preventDefault();
     event.stopPropagation(); //stop from being sent 3 times to server
 
+    $(this).attr('disabled', true);
+
 
     if ($(".topping:checked").length == 0) {
       alert("NO TOPPINGS!!! \nPlease select at least one TOPPING")
@@ -84,12 +86,15 @@ $(document).ready(function () {
 
         if ($("#BurgerID").val() === "") {
           alert("YOUR NAME PLEASE \nPlease insert your BURGER NAME!!!")
+          return false;
         } else if ($('#inputSauce option:selected').val() === "0") {
           alert("GOT TO HAVE SAUCE!!! \nPlease choose some SAUCE!!")
+          return false;
         } else if ($('#inputPatty option:selected').val() === "0") {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
+          return false;
         } else {
-          $(this).attr('disabled', true);
+          
           runAjax()
           return false;
         }
