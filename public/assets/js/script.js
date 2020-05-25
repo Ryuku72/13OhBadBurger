@@ -78,6 +78,7 @@ $(document).ready(function () {
             function() {
               // Reload the page to get the updated list from server(true) or cache (false)
               location.reload(true);
+              return false;
             })
 
         }
@@ -94,9 +95,8 @@ $(document).ready(function () {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
           return false;
         } else {
-          
           runAjax()
-          return false;
+         
         }
       });
     }
