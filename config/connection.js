@@ -1,8 +1,6 @@
 const mysql = require("mysql");
 const chalk = require("chalk");
 
-connection.connect();
-
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -16,13 +14,15 @@ if (process.env.JAWSDB_URL) {
     });
 };
 
-//mySQL connection
-connection.connect(function (err) {
-  if (err){ 
-    console.log(chalk.bold.red(err));
-  return;
-  }
-  console.log(chalk.bold.yellow("Connected to mySQL As ID# ") + chalk.green(connection.threadId))
-})
+connection.connect();
+
+// //mySQL connection
+// connection.connect(function (err) {
+//   if (err){ 
+//     console.log(chalk.bold.red(err));
+//   return;
+//   }
+//   console.log(chalk.bold.yellow("Connected to mySQL As ID# ") + chalk.green(connection.threadId))
+// })
 
 module.exports = connection;
