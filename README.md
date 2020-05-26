@@ -89,14 +89,16 @@ Happy its done and leason learnt
 
 Currently outstanding issues
 
-1. Purchasing history tabs should display date and not time. Date needs to be set correctly then re-added
-2. Should be able to order Burger without Sauce, Topping or patty
-3. Price should be correctly formated
-4. Tables should be correctly marginalised
-5. Bootstrap should be removed
-6. Clean up my code
+1. Should be able to order Burger without Sauce, Topping or patty
+2. Price should be correctly formated
+3. Tables should be correctly marginalised
+4. Bootstrap should be removed
+5. Clean up my code
 7. Double click still appears to be an issue. 
 
+> 26/05/20202
+> Fixed issue with Date by using Handlebars-helper
+> Double click is still an issue but added an alert to avoid additional additional clicks
  <br>
 <a name="Installation">
 
@@ -144,6 +146,7 @@ Licenses: MIT
 * Resources provided in Slack
 * Youtube tutorials
 * Dillinger.io
+* Handlebars-Helper
 
 <br>
 
