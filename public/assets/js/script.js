@@ -48,6 +48,7 @@ $(document).ready(function () {
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
+    this.setAttribute("disabled", "true")
     event.stopPropagation();
     event.isImmediatePropagationStopped();
     event.preventDefault();
@@ -57,6 +58,7 @@ $(document).ready(function () {
     } else {
       const toppings = [];
       $.each($("input[name='topping']:checked"), function () {
+        
         toppings.push($(this).val());
 
         //console.log("My toppings are: " + toppings.join(", "));
@@ -85,15 +87,19 @@ $(document).ready(function () {
 
         if ($("#BurgerID").val() === "") {
           alert("YOUR NAME PLEASE \nPlease insert your BURGER NAME!!!")
-         
+          this.setAttribute("disabled", "false")
+          return
         } else if ($('#inputSauce option:selected').val() === "0") {
           alert("GOT TO HAVE SAUCE!!! \nPlease choose some SAUCE!!")
+          this.setAttribute("disabled", "false")
+          return
      
         } else if ($('#inputPatty option:selected').val() === "0") {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
+          this.setAttribute("disabled", "false")
+          return
        
         } else {
-          this.setAttribute("disabled", "true")
           runAjax()
         }
       });
