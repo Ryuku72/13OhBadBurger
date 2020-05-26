@@ -43,11 +43,6 @@ $(document).ready(function () {
 
   });
 
-  // prevent double click
-  $("*").dblclick(function(e){
-    e.preventDefault;
-  })
-
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
