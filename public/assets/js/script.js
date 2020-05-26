@@ -43,27 +43,17 @@ $(document).ready(function () {
 
   });
 
-  //form prevent
-  $("form").submit(function(){
-    $(this).submit(function(){
-      return false;
-    })
-    return true;
-  })
-
 
 
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
+    event.stopPropagation();
+    event.isImmediatePropagationStopped();
     event.preventDefault();
-    $(this).prop('disabled', true);
-    event.stopPropagation(); //stop from being sent 3 times to server
-  
-
+   
     if ($(".topping:checked").length == 0) {
       alert("NO TOPPINGS!!! \nPlease select at least one TOPPING")
-      $(this).prop('disabled', false);
     } else {
       const toppings = [];
       $.each($("input[name='topping']:checked"), function () {
@@ -95,14 +85,15 @@ $(document).ready(function () {
 
         if ($("#BurgerID").val() === "") {
           alert("YOUR NAME PLEASE \nPlease insert your BURGER NAME!!!")
-          $(this).prop('disabled', false);
+         
         } else if ($('#inputSauce option:selected').val() === "0") {
           alert("GOT TO HAVE SAUCE!!! \nPlease choose some SAUCE!!")
-          $(this).prop('disabled', false);
+     
         } else if ($('#inputPatty option:selected').val() === "0") {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
-          $(this).prop('disabled', false);
+       
         } else {
+          this.setAttribute("disabled", "true")
           runAjax()
         }
       });
@@ -139,7 +130,7 @@ $(document).ready(function () {
 
   $(".delBtn").on("click", function (event) {
     const burgerID = $(event.target).data("id")
-
+    event.preventDefault();
     // Send the DELETE request.
     $.ajax("/burgers/" + burgerID, {
       type: "DELETE"
