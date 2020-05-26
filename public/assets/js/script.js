@@ -50,17 +50,16 @@ $(document).ready(function () {
     })
     return true;
   })
-
-  $(function(){
-    $(".newBurger").dblclick(false);
-  })
+  function preventDoubleClick(){
+  event.preventDefault();
+  $(this).prop('disabled', true);
+  }
 
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
     event.preventDefault();
     event.stopPropagation(); //stop from being sent 3 times to server
-    $(this).prop('disabled', true);
   
 
     if ($(".topping:checked").length == 0) {
