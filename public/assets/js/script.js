@@ -60,12 +60,12 @@ $(document).ready(function () {
   $(".newBurger").on("submit", function (event) {
     event.preventDefault();
     event.stopPropagation(); //stop from being sent 3 times to server
-    $(".newBurger").attr('disabled', true);
+    $(this).prop('disabled', true);
   
 
     if ($(".topping:checked").length == 0) {
       alert("NO TOPPINGS!!! \nPlease select at least one TOPPING")
-      $(".newBurger").attr('disabled', false);
+      $(this).prop('disabled', false);
     } else {
       const toppings = [];
       $.each($("input[name='topping']:checked"), function () {
@@ -97,13 +97,13 @@ $(document).ready(function () {
 
         if ($("#BurgerID").val() === "") {
           alert("YOUR NAME PLEASE \nPlease insert your BURGER NAME!!!")
-          $(".newBurger").attr('disabled', false);
+          $(this).prop('disabled', false);
         } else if ($('#inputSauce option:selected').val() === "0") {
           alert("GOT TO HAVE SAUCE!!! \nPlease choose some SAUCE!!")
-          $(".newBurger").attr('disabled', false);
+          $(this).prop('disabled', false);
         } else if ($('#inputPatty option:selected').val() === "0") {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
-          $(".newBurger").attr('disabled', false);
+          $(this).prop('disabled', false);
         } else {
           runAjax()
         }
