@@ -51,6 +51,10 @@ $(document).ready(function () {
     return true;
   })
 
+  $(function(){
+    $(".newBurger").dblclick(false);
+  })
+
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
