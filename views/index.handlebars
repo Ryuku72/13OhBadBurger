@@ -158,7 +158,7 @@
                 <span class="Price float-right">Price: ${{this.price}}</span>
                 </div>
                   <div class="col">
-                <span class="Price float-right"> Date: {{this.date}} </span>
+                <span class="Price float-right"> Date: {{moment this.date format="MM-DD-YYYY"}} </span>
                 </div>
                 <div class="col">
               <button data-id="{{this.burgerID}}"class="btn btn-danger float-right delBtn">DELETE</button> 

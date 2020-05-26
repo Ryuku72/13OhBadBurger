@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
+const helpers = require('handlebars-helpers')()
 
 // Port
 const PORT = process.env.PORT || 8000;
