@@ -48,8 +48,10 @@ $(document).ready(function () {
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
-    event.stopPropagation();
-    event.preventDefault();
+  
+    event.preventDefault(); 
+    event.stopPropagation(); 
+    event.stopImmediatePropagation();
    
     if ($(".topping:checked").length == 0) {
       alert("NO TOPPINGS!!! \nPlease select at least one TOPPING")
