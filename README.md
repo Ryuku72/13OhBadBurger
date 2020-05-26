@@ -92,13 +92,15 @@ Currently outstanding issues
 1. Should be able to order Burger without Sauce, Topping or patty
 2. Price should be correctly formated
 3. Tables should be correctly marginalised
-4. Bootstrap should be removed
+4. Bootstrap removed
 5. Clean up my code
 7. Double click still appears to be an issue. 
+8. Replace all validation alerts with custom pop up boxes
 
 > 26/05/20202
 > Fixed issue with Date by using Handlebars-helper
-> Double click is still an issue but added an alert to avoid additional additional clicks
+> Double click is still an issue but added an alert to avoid additional clicks
+> Updated both Heroku and MySQL time zones but appears to have no affect on the displayed time
  <br>
 <a name="Installation">
 
