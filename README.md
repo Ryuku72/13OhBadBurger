@@ -95,6 +95,7 @@ Currently outstanding issues
 4. Tables should be correctly marginalised
 5. Bootstrap should be removed
 6. Clean up my code
+7. Double click still appears to be an issue. 
 
  <br>
 <a name="Installation">
