@@ -50,15 +50,14 @@ $(document).ready(function () {
     })
     return true;
   })
-  function preventDoubleClick(){
-  event.preventDefault();
-  $(this).prop('disabled', true);
-  }
+
+
 
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
     event.preventDefault();
+    $(this).prop('disabled', true);
     event.stopPropagation(); //stop from being sent 3 times to server
   
 
