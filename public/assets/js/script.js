@@ -48,9 +48,7 @@ $(document).ready(function () {
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
-    this.setAttribute("disabled", "true")
     event.stopPropagation();
-    event.isImmediatePropagationStopped();
     event.preventDefault();
    
     if ($(".topping:checked").length == 0) {
@@ -87,20 +85,13 @@ $(document).ready(function () {
 
         if ($("#BurgerID").val() === "") {
           alert("YOUR NAME PLEASE \nPlease insert your BURGER NAME!!!")
-          this.setAttribute("disabled", "false")
-          return
         } else if ($('#inputSauce option:selected').val() === "0") {
           alert("GOT TO HAVE SAUCE!!! \nPlease choose some SAUCE!!")
-          this.setAttribute("disabled", "false")
-          return
-     
         } else if ($('#inputPatty option:selected').val() === "0") {
           alert("BURGER WITH NO PATTY???? \nPlease choose a PATTY!!")
-          this.setAttribute("disabled", "false")
-          return
-       
         } else {
           runAjax()
+          alert("Burger Order Submitted")
         }
       });
     }
