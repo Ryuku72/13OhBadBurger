@@ -43,6 +43,14 @@ $(document).ready(function () {
 
   });
 
+  //form prevent
+  $("form").submit(function(){
+    $(this).submit(function(){
+      return false;
+    })
+    return true;
+  })
+
   //Create burger
 
   $(".newBurger").on("submit", function (event) {
