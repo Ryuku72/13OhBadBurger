@@ -17,11 +17,7 @@ I WANT to be able to delete and update orders SO THAT I can keep a history of my
 <br>
 
 ### Key Concepts
-- Handlebars
-- MySQL Cascade property
-- ORMs
-- Async
-- MVC
+Handlebars, MySQL Cascade property, ORMs, Async and MVC
 
 ## Contents
 * [Build Process](#Build_Process)
