@@ -1,6 +1,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/Ryuku72/13OhBadBurger?style=for-the-badge)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Ryuku72/13OhBadBurger?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/Ryuku72/13OhBadBurger3?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/Ryuku72/13OhBadBurger?style=for-the-badge)
 
 # Oh!Bad Burger APP
 __PROJECT13: 25TH MAY 2020__
