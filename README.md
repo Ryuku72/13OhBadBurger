@@ -11,9 +11,6 @@ https://aqueous-wildwood-59065.herokuapp.com/#
 ## Aim
 This week we focus on using Handlebars, MySQL and Express within Node.JS to make an app which allows the user to devour burgers. This will then be uploaded to Heroku for marking. However, for flare I wanted to also allow the option to customize your burger... 
 
-### Working Project Example
-* Heroku App https://aqueous-wildwood-59065.herokuapp.com/#
-
 ### User Story
 As a CUSTOMER, I want to be able to order a custom burger.
 I WANT to be able to delete and update orders SO THAT I can keep a history of my purchases. 
