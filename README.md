@@ -16,7 +16,7 @@ As a CUSTOMER, I want to be able to order a custom burger.
 I WANT to be able to delete and update orders SO THAT I can keep a history of my purchases. 
 <br>
 
-## Key Concepts for HomeworkW10
+### Key Concepts
 - Handlebars
 - MySQL Cascade property
 - ORMs
