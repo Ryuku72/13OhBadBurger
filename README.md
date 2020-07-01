@@ -1,18 +1,21 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/Ryuku72/HomeworkW13?style=for-the-badge)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Ryuku72/HomeworkW13?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/Ryuku72/HomeworkW13?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/Ryuku72/13OhBadBurger?style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Ryuku72/13OhBadBurger?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/Ryuku72/13OhBadBurger3?style=for-the-badge)
 
-# HomeworkW13
-## Oh!Bad Burger APP
-25th May 2020
-*****
-
-### Aim
-This week we focus on using Handlebars, MySQL and Express within Node.JS to make an app which allows the user to devour burgers. This will then be uploaded to Heroku for marking. However, for flare I wanted to also allow the option to customize your burger... 
+# Oh!Bad Burger APP
+__PROJECT13: 25TH MAY 2020__
+https://aqueous-wildwood-59065.herokuapp.com/#
 <br>
+
+## Aim
+This week we focus on using Handlebars, MySQL and Express within Node.JS to make an app which allows the user to devour burgers. This will then be uploaded to Heroku for marking. However, for flare I wanted to also allow the option to customize your burger... 
 
 ### Working Project Example
 * Heroku App https://aqueous-wildwood-59065.herokuapp.com/#
+
+### User Story
+As a CUSTOMER, I want to be able to order a custom burger.
+I WANT to be able to delete and update orders SO THAT I can keep a history of my purchases. 
 <br>
 
 ## Key Concepts for HomeworkW10
